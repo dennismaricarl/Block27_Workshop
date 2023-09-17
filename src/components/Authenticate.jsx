@@ -25,12 +25,12 @@ export default function Authenticate({ token }) {
 
     return (
     <>
-    <h2>Authenticate</h2>
+    {/* <h2>Authenticate</h2> */}
     {successMessage && <p>{successMessage}</p>}
     {error && <p>{error}</p>}
-
-    <button onClick={handleClick}>Autenticate Token</button>
+    <button id="authen-button" onClick={handleClick}>Autenticate Token</button>
     </>
+    
 
     );
 

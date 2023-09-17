@@ -5,7 +5,19 @@ export default function SignUpForm({setToken}) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     
+    //form validation
     
+    function handleUsernameChange (e) {
+        if(e.target.value.length < 8) {
+            setError("Username too short")
+        }
+        if (error && e.target.value.length >=8) {
+            setError("");
+        }
+        setUsername(e.target.value);
+    }
+
+
     async function handleSubmit(e) {
         e.preventDefault();
         try{
@@ -22,17 +34,20 @@ export default function SignUpForm({setToken}) {
     }
     return (
     <>
-    <h2>Sign Up</h2>
-    {error &&  <p>{error}</p>}
+    
 
-    <form onSubmit={handleSubmit}>
+
+    <form method="post" onSubmit={handleSubmit}>
+    <h2>Sign Up</h2>
         <label>
             Username:{" "}
             <input 
                 value={username} 
-                onChange={(e)=> setUsername(e.target.value)}
+                onChange={handleUsernameChange}
+                // onChange={(e)=> setUsername(e.target.value)}
             />
         </label>
+        <br/>
         <br/>
         <label>
             Password: {" "} 
@@ -42,8 +57,8 @@ export default function SignUpForm({setToken}) {
             />
         </label>
         <hr/>
-
         <button>Submit</button>  
+        {error &&  <h4>{error}</h4>}
     </form>
     </>
     );
