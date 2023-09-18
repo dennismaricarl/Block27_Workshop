@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <SignUpForm token={token} setToken={setToken} />
-      <Authenticate token={token} setToken={setToken} />
+      <Authenticate token={token} setToken={setToken}/>
     </>
   );
 }
